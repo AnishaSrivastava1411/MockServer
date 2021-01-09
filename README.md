@@ -1,10 +1,7 @@
 # CommerceIQ Home Assignment
 # MockServer 
-<u> Built a REST based JSON mock server to easily add, update, delete and access data from a JSON file. </u>
+<u><h4> Built a REST based JSON mock server to easily add, update, delete and access data from a JSON file. </h4></u>
 
-# Requirements
-
-# Installation
 
 # URLs for Operations
 
