@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.commerceIQ.MockServer.requestmodel.PostsRequestModel;
@@ -93,11 +94,11 @@ public class PostsController {
 			@RequestBody PostsRequestModel PostsRequestModel) {
 		log.info("inside updatePosts" + postsId);
 		JSONObject reqData = new JSONObject();
-		reqData.putOpt("Title", PostsRequestModel.getTitle());
-		reqData.putOpt("Author", PostsRequestModel.getAuthor());
+		reqData.putOpt("title", PostsRequestModel.getTitle());
+		reqData.putOpt("author", PostsRequestModel.getAuthor());
 		reqData.putOpt("id", postsId);
-		reqData.putOpt("Views", PostsRequestModel.getViews());
-		reqData.putOpt("Reviews", PostsRequestModel.getReviews());
+		reqData.putOpt("views", PostsRequestModel.getViews());
+		reqData.putOpt("reviews", PostsRequestModel.getReviews());
 		responseModel = getResponseModelObj();
 		if (getPostsUtilObject().updatePostsData(postsId, reqData)) {
 			JSONObject response = new JSONObject();
@@ -116,9 +117,19 @@ public class PostsController {
 		}
 
 	}
+	//GET /posts?_sort=views&_order=asc
+	@GetMapping("/getSortedPosts")
+	public String sortPost(@RequestParam String _sort,@RequestParam String _order) {
+		return getPostsUtilObject().sortAllPost(_sort);
+	}
 
-	////////////////////////// {BASE_URL}/getPostsData
+	//GET /posts?title=title1&author=CIQ
+	@GetMapping("/getFilterPosts")  
+	public String filterPost(@RequestParam String title ,@RequestParam String author) {
+		return getPostsUtilObject().filterTitleAuthor(title, author);
+	}
 
+	
 	@Lookup
 	PostsService getPostsServiceObj() {
 		return null;

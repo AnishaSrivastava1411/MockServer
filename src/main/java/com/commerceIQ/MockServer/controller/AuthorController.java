@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.commerceIQ.MockServer.requestmodel.AuthorRequestModel;
@@ -94,8 +95,8 @@ public class AuthorController {
 			@RequestBody AuthorRequestModel authorRequestModel) {
 		log.info("inside updateAuthor" + authorId);
 		JSONObject reqData = new JSONObject();
-		reqData.putOpt("First_Name", authorRequestModel.getFirst_Name());
-		reqData.putOpt("Last_Name", authorRequestModel.getLast_Name());
+		reqData.putOpt("first_Name", authorRequestModel.getFirst_Name());
+		reqData.putOpt("last_Name", authorRequestModel.getLast_Name());
 		reqData.putOpt("id", authorId);
 		reqData.putOpt("posts", authorRequestModel.getPosts());
 		responseModel = getResponseModelObj();
@@ -117,7 +118,17 @@ public class AuthorController {
 
 	}
 
-	////////////////////////// {BASE_URL}/getAuthorData
+	//GET /author?_sort=posts&_order=asc
+		@GetMapping("/getSortedAuthor")
+		public String sortAuthor(@RequestParam String _sort,@RequestParam String _order) {
+			return getAuthorUtilObject().sortAllAuthor(_sort);
+		}
+
+		//GET /Author?first_Name=first_Name1&last_Name=last_Name1
+		@GetMapping("/getFilterAuthor")  
+		public String filterAuthor(@RequestParam String first_Name ,@RequestParam String last_Name) {
+			return getAuthorUtilObject().filterFirstLast(first_Name, last_Name);
+		}
 
 	@Lookup
 	AuthorService getAuthorServiceObj() {
