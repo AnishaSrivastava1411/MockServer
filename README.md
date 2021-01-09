@@ -8,9 +8,9 @@
 
 # URLs for Operations
 
-<h3> 1. Add a record (POST)</h3>
+<h2> 1. Add a record (POST)</h2>
 
-a) posts : {BASE_URL}/setPosts
+<h3>a) posts : {BASE_URL}/setPosts</h3>
 
 ```http://localhost:8081/setPosts```
 
@@ -26,7 +26,7 @@ a) posts : {BASE_URL}/setPosts
 ```
 
 
-b) author : {BASE_URL}/setAuthor
+<h3>b) author : {BASE_URL}/setAuthor</h3>
 
 ```http://localhost:8081/setAuthor```
 
@@ -45,9 +45,9 @@ b) author : {BASE_URL}/setAuthor
 
 
 
-<h3>2. Update a record (PUT)</h3>
+<h2>2. Update a record (PUT)</h2>
 
-a) posts : {BASE_URL}/updatePosts/{posts_id}
+<h3>a) posts : {BASE_URL}/updatePosts/{posts_id} </h3>
 
 ``` http://localhost:8081/updatePosts/2```
 
@@ -86,7 +86,7 @@ a) posts : {BASE_URL}/updatePosts/{posts_id}
 ```
 
 
-b) author : {BASE_URL}/updateAuthor/{author_id}
+<h3>b) author : {BASE_URL}/updateAuthor/{author_id} </h3>
 
 
 ```http://localhost:8081/updateAuthor/3```
@@ -128,9 +128,9 @@ b) author : {BASE_URL}/updateAuthor/{author_id}
 
 
 
-<h3>3. Delete a record (DELETE)</h3>
+<h2>3. Delete a record (DELETE)</h2>
 
-a) posts : {BASE_URL}/deletePosts/{posts_id}
+<h3>a) posts : {BASE_URL}/deletePosts/{posts_id}  </h3>
 
 
 ```http://localhost:8081/deletePosts/2```
@@ -148,7 +148,7 @@ a) posts : {BASE_URL}/deletePosts/{posts_id}
 
 
 
-b) author : {BASE_URL}/deleteAuthor/{author_id}
+<h3>b) author : {BASE_URL}/deleteAuthor/{author_id} </h3>
 
 
 ```http://localhost:8081/deleteAuthor/3```
@@ -162,23 +162,45 @@ b) author : {BASE_URL}/deleteAuthor/{author_id}
 }
 ```
 
-<h3>4. Get a record  (GET)</h3>
 
-a) posts : {BASE_URL}/getPosts/{posts_id}
+
+
+<h2>4. Get a record  (GET)</h2>
+
+
+
+<h3>a) posts : {BASE_URL}/getPosts/{posts_id}  </h3>
+
+
 
 
 ```http://localhost:8081/getPosts/2```
 
 
+
+
 <h3>Response</h3>
 
+
+
 ```Not Found```
+
+
+
+
 
 
 ```http://localhost:8081/getPosts/1```
 
 
+
+
+
 <h3>Response</h3>
+
+
+
+
 
 ```
 {
@@ -188,12 +210,21 @@ a) posts : {BASE_URL}/getPosts/{posts_id}
     "title": "title1",
     "views": 750
 }
+
+
+
+
 ```
 
 
-b) author : {BASE_URL}/getAuthor/{author_id}
+<h3>b) author : {BASE_URL}/getAuthor/{author_id} </h3>
+
+
+
 
 ```http://localhost:8081/getAuthor/2```
+
+
 
 <h3>Response</h3>
 
@@ -206,22 +237,27 @@ b) author : {BASE_URL}/getAuthor/{author_id}
     "id": 2,
     "posts": 39
 }
+
 ```
 
 
 
-<h3>5. Get all records of each (GET)</h3>
+<h2>5. Get all records of each (GET)</h2>
 
-a) posts : {BASE_URL}/getAllPostData
+
+
+<h3>a) posts : {BASE_URL}/getAllPostData </h3>
+
+
 
 ```http://localhost:8081/getAllPostsData```
 
 
-
-
 <h3>Response</h3>
-```
-[
+
+
+
+```[
     {
         "reviews": 558,
         "author": "CIQ",
@@ -237,15 +273,25 @@ a) posts : {BASE_URL}/getAllPostData
         "views": 1000
     }
 ]
-
 ```
 
 
-b) author : {BASE_URL}/getAllAuthorData
+
+
+
+<h3>b) author : {BASE_URL}/getAllAuthorData </h3>
+
+
 
 ```http://localhost:8081/getAllAuthorData```
 
+
+
+
 <h3>Response</h3>
+
+
+
 
 ```
 [
@@ -268,14 +314,21 @@ b) author : {BASE_URL}/getAllAuthorData
         "posts": 75
     }
 ]
+
 ```
 
 
-<h3>6. Get all records in a go (GET)</h3>
+<h2>6. Get all records in a go (GET)</h2>
 
-   {BASE_URL}/getAll
+
+
+   <h3>{BASE_URL}/getAll </h3>
+   
+   
    
  ``` http://localhost:8081/getAll ```  
+ 
+ 
    
    
    
@@ -326,12 +379,15 @@ b) author : {BASE_URL}/getAllAuthorData
 
 ```
 
+
+
+
    
-<h3> 7.  Filtering at entity level (GET) </h3>
+<h2> 7.  Filtering at entity level (GET) </h2>
 
 
 
-a) posts : {BASE_URL}/posts?title=title1&author=CIQ
+<h3>a) posts : {BASE_URL}/posts?title=title1&author=CIQ </h3>
 
 
 
@@ -356,7 +412,7 @@ a) posts : {BASE_URL}/posts?title=title1&author=CIQ
 
 
 
-b) author : {BASE_URL}/author?first_Name=Commerce&last_Name=IQ 
+<h3>b) author : {BASE_URL}/author?first_Name=Commerce&last_Name=IQ  </h3>
 
 
 
@@ -381,10 +437,10 @@ b) author : {BASE_URL}/author?first_Name=Commerce&last_Name=IQ
 
 
 
-<h3> 8. Sorting at entity level (GET) </h3>
+<h2> 8. Sorting at entity level (GET) </h2>
  
  
- a) posts : {BASE_URL}/posts?_sort=views&_order=asc
+ <h3>a) posts : {BASE_URL}/posts?_sort=views&_order=asc  </h3>
  
  
  ```http://localhost:8081/getSortedPosts?_sort=views&_order=asc```
@@ -409,7 +465,7 @@ b) author : {BASE_URL}/author?first_Name=Commerce&last_Name=IQ
 
 
 
- b) author : {BASE_URL}/author?_sort=posts&_order=asc
+ <h3>b) author : {BASE_URL}/author?_sort=posts&_order=asc  </h3>
  
  
  ```http://localhost:8081/getSortedAuthor?_sort=posts&_order=asc```
@@ -438,7 +494,5 @@ b) author : {BASE_URL}/author?first_Name=Commerce&last_Name=IQ
  ]
  
  ```
-
-
 
 
