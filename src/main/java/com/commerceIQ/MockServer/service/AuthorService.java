@@ -17,9 +17,8 @@ import com.google.gson.Gson;
 @Scope("prototype")
 public class AuthorService {
 
-
 	private void validateData(AuthorRequestModel authorRequestModel, ResponseModel responseModel) {
-				
+
 		if (authorRequestModel.getFirst_Name() == null || authorRequestModel.getFirst_Name().length() == 0) {
 			responseModel.setResponseCode("401");
 			responseModel.setResponseData("First Name is invalid");
@@ -38,7 +37,6 @@ public class AuthorService {
 
 	public void storeAuthorData(AuthorRequestModel authorRequestModel, ResponseModel responseModel) {
 
-	
 		validateData(authorRequestModel, responseModel);
 		if (responseModel.getResponseCode().equals("200") == false) {
 			return;
@@ -49,7 +47,6 @@ public class AuthorService {
 		int id = objAuthorutil.getlastIndex();
 		authorRequestModel.setId((long) id);
 
-		
 		JSONObject reqData = new JSONObject();
 		reqData.putOpt("first_Name", authorRequestModel.getFirst_Name());
 		reqData.putOpt("last_Name", authorRequestModel.getLast_Name());
@@ -57,13 +54,10 @@ public class AuthorService {
 		reqData.putOpt("posts", authorRequestModel.getPosts());
 
 		boolean result = objAuthorutil.addData(reqData.toString());
-		if(result )
-		{ 
+		if (result) {
 			responseModel.setResponseCode("200");
-			responseModel.setResponseData("Data update success");			
-		}
-		else
-		{
+			responseModel.setResponseData("Data update success");
+		} else {
 			responseModel.setResponseCode("401");
 			responseModel.setResponseData("failure in storing data");
 		}
@@ -75,11 +69,9 @@ public class AuthorService {
 		String getAuthorData = objAuthorutil.getAuthorData();
 		resModel.setResponseCode("200");
 		resModel.setResponseData(getAuthorData);
-		
-		
+
 	}
-	
-	
+
 	@Lookup
 	AuthorUtil getAuthorUtilObject() {
 		return null;

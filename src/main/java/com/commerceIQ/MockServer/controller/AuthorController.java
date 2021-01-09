@@ -118,17 +118,17 @@ public class AuthorController {
 
 	}
 
-	//GET /author?_sort=posts&_order=asc
-		@GetMapping("/getSortedAuthor")
-		public String sortAuthor(@RequestParam String _sort,@RequestParam String _order) {
-			return getAuthorUtilObject().sortAllAuthor(_sort);
-		}
+	// GET /author?_sort=posts&_order=asc
+	@GetMapping("/getSortedAuthor")
+	public String sortAuthor(@RequestParam String _sort, @RequestParam String _order) {
+		return getAuthorUtilObject().sortAllAuthor(_sort);
+	}
 
-		//GET /Author?first_Name=first_Name1&last_Name=last_Name1
-		@GetMapping("/getFilterAuthor")  
-		public String filterAuthor(@RequestParam String first_Name ,@RequestParam String last_Name) {
-			return getAuthorUtilObject().filterFirstLast(first_Name, last_Name);
-		}
+	// GET /Author?first_Name=first_Name1&last_Name=last_Name1
+	@GetMapping("/getFilterAuthor")
+	public String filterAuthor(@RequestParam String first_Name, @RequestParam String last_Name) {
+		return getAuthorUtilObject().filterFirstLast(first_Name, last_Name);
+	}
 
 	@Lookup
 	AuthorService getAuthorServiceObj() {

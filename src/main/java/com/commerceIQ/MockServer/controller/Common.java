@@ -8,26 +8,15 @@ import com.commerceIQ.MockServer.util.AuthorUtil;
 
 @RestController
 public class Common {
-	
-	@GetMapping (value = "/getAll")
-	 public String getAll()
-	 {
-		 return getAuthorUtilObject().readDataFromFile();
-	 }
 
-	
+	@GetMapping(value = "/getAll")
+	public String getAll() {
+		return getAuthorUtilObject().readDataFromFile();
+	}
+
 	@Lookup
 	AuthorUtil getAuthorUtilObject() {
 		return null;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

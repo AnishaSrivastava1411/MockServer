@@ -117,19 +117,19 @@ public class PostsController {
 		}
 
 	}
-	//GET /posts?_sort=views&_order=asc
+
+	// GET /posts?_sort=views&_order=asc
 	@GetMapping("/getSortedPosts")
-	public String sortPost(@RequestParam String _sort,@RequestParam String _order) {
+	public String sortPost(@RequestParam String _sort, @RequestParam String _order) {
 		return getPostsUtilObject().sortAllPost(_sort);
 	}
 
-	//GET /posts?title=title1&author=CIQ
-	@GetMapping("/getFilterPosts")  
-	public String filterPost(@RequestParam String title ,@RequestParam String author) {
+	// GET /posts?title=title1&author=CIQ
+	@GetMapping("/getFilterPosts")
+	public String filterPost(@RequestParam String title, @RequestParam String author) {
 		return getPostsUtilObject().filterTitleAuthor(title, author);
 	}
 
-	
 	@Lookup
 	PostsService getPostsServiceObj() {
 		return null;

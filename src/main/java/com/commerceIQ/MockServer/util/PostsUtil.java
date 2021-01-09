@@ -66,13 +66,13 @@ public class PostsUtil {
 	public int getlastIndex() {
 		try {
 			JSONArray arr = new JSONArray(getPostsData());
-			JSONObject obj= new JSONObject();
-			
-			if(arr.length()>0)
-				obj = new JSONObject(arr.get(arr.length()-1).toString());
-			
-			int i = obj.optInt("id", 0)+1;
-			
+			JSONObject obj = new JSONObject();
+
+			if (arr.length() > 0)
+				obj = new JSONObject(arr.get(arr.length() - 1).toString());
+
+			int i = obj.optInt("id", 0) + 1;
+
 			return i;
 
 		} catch (Exception e) {
@@ -83,24 +83,25 @@ public class PostsUtil {
 		}
 
 	}
-public String filterTitleAuthor(String title,String author) {
-	try {
-		JSONArray arr = new JSONArray(getPostsData());
-		for (int i = 0; i < arr.length(); i++) {
-			JSONObject temp = new JSONObject(arr.get(i).toString());
-			if (temp.optString("title").equals(title)&&temp.optString("author").equals(author))
-				return temp.toString();
 
+	public String filterTitleAuthor(String title, String author) {
+		try {
+			JSONArray arr = new JSONArray(getPostsData());
+			for (int i = 0; i < arr.length(); i++) {
+				JSONObject temp = new JSONObject(arr.get(i).toString());
+				if (temp.optString("title").equals(title) && temp.optString("author").equals(author))
+					return temp.toString();
+
+			}
+
+			return "Not Found";
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error("error {}", e.getMessage());
+			return "Not Found";
 		}
-
-		return "Not Found";
-
-	} catch (Exception e) {
-		e.printStackTrace();
-		log.error("error {}", e.getMessage());
-		return "Not Found";
 	}
-}
 
 	public String getPostsData(int index) {
 		try {
@@ -198,41 +199,41 @@ public String filterTitleAuthor(String title,String author) {
 		}
 
 	}
-	public String sortAllPost(String sortType) {
-		return sort( getPostsData() ,sortType);
-	}
-	
-	
-	public static  String  sort(String jsonArr,String sortType) {
-		  JSONArray jsonArray = new JSONArray(jsonArr);
-	      JSONArray sortedJsonArray = new JSONArray();
-	      List list = new ArrayList();
-	      for(int i = 0; i < jsonArray.length(); i++) {
-	         list.add(jsonArray.getJSONObject(i));
-	      }
-	         Collections.sort(list, new Comparator() {
-	         private final String KEY_NAME = sortType;
-	         @Override
-	         public int compare(Object o1, Object o2) {
-	        	 
-	        	 JSONObject a = new JSONObject(o1.toString()), b= new JSONObject(o2.toString());
-	            String str1 = new String();
-	            String str2 = new String();
-	            try {
-	               str1 = (String)a.get(KEY_NAME);
-	               str2 = (String)b.get(KEY_NAME);
-	            } catch(JSONException e) {
-	               e.printStackTrace();
-	            }
-	            return str1.compareTo(str2);
-	         }
-			
-	      });
-	      for(int i = 0; i < jsonArray.length(); i++) {
-	         sortedJsonArray.put(list.get(i));
-	      }
-	      return sortedJsonArray.toString();
-	        }
 
+	public String sortAllPost(String sortType) {
+		return sort(getPostsData(), sortType);
+	}
+
+	public static String sort(String jsonArr, String sortType) {
+		JSONArray jsonArray = new JSONArray(jsonArr);
+		JSONArray sortedJsonArray = new JSONArray();
+		List list = new ArrayList();
+		for (int i = 0; i < jsonArray.length(); i++) {
+			list.add(jsonArray.getJSONObject(i));
+		}
+		Collections.sort(list, new Comparator() {
+			private final String KEY_NAME = sortType;
+
+			@Override
+			public int compare(Object o1, Object o2) {
+
+				JSONObject a = new JSONObject(o1.toString()), b = new JSONObject(o2.toString());
+				String str1 = new String();
+				String str2 = new String();
+				try {
+					str1 = (String) a.get(KEY_NAME);
+					str2 = (String) b.get(KEY_NAME);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				return str1.compareTo(str2);
+			}
+
+		});
+		for (int i = 0; i < jsonArray.length(); i++) {
+			sortedJsonArray.put(list.get(i));
+		}
+		return sortedJsonArray.toString();
+	}
 
 }
