@@ -41,10 +41,10 @@ public class PostsService {
 
 	}
 
-	public void storePostsData(PostsRequestModel PostsRequestModel, ResponseModel responseModel) {
+	public void storePostsData(PostsRequestModel postsRequestModel, ResponseModel responseModel) {
 
 	
-		validateData(PostsRequestModel, responseModel);
+		validateData(postsRequestModel, responseModel);
 		if (responseModel.getResponseCode().equals("200") == false) {
 			return;
 
@@ -52,15 +52,15 @@ public class PostsService {
 		PostsUtil objPostsutil = getPostsUtilObject();
 
 		int id = objPostsutil.getlastIndex();
-		PostsRequestModel.setId((long) id);
+		postsRequestModel.setId((long) id);
 
 		
 		JSONObject reqData = new JSONObject();
-		reqData.putOpt("Title", PostsRequestModel.getTitle());
-		reqData.putOpt("Author", PostsRequestModel.getAuthor());
-		reqData.putOpt("Views", PostsRequestModel.getViews());
-		reqData.putOpt("Reviews", PostsRequestModel.getReviews());
-		reqData.putOpt("Id", PostsRequestModel.getId());
+		reqData.putOpt("title", postsRequestModel.getTitle());
+		reqData.putOpt("author", postsRequestModel.getAuthor());
+		reqData.putOpt("views", postsRequestModel.getViews());
+		reqData.putOpt("reviews", postsRequestModel.getReviews());
+		reqData.putOpt("id", postsRequestModel.getId());
 
 		boolean result = objPostsutil.addData(reqData.toString());
 		if(result )

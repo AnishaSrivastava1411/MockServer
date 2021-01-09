@@ -52,8 +52,8 @@ public class AuthorService {
 
 		
 		JSONObject reqData = new JSONObject();
-		reqData.putOpt("First_Name", authorRequestModel.getFirst_Name());
-		reqData.putOpt("Last_Name", authorRequestModel.getLast_Name());
+		reqData.putOpt("first_Name", authorRequestModel.getFirst_Name());
+		reqData.putOpt("last_Name", authorRequestModel.getLast_Name());
 		reqData.putOpt("id", authorRequestModel.getId());
 		reqData.putOpt("posts", authorRequestModel.getPosts());
 
