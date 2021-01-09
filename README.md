@@ -239,7 +239,7 @@
 
 
 
-<h2>5. Get all records of each (GET)</h2>
+<h2>5. Get all records of each entity(GET)</h2>
 
 
 
