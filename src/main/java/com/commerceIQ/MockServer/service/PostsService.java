@@ -20,8 +20,7 @@ public class PostsService {
 
 
 	private void validateData(PostsRequestModel PostsRequestModel, ResponseModel responseModel) {
-		System.out.println(PostsRequestModel.toString());
-		
+				
 		if (PostsRequestModel.getAuthor() == null || PostsRequestModel.getAuthor().length() == 0) {
 			responseModel.setResponseCode("401");
 			responseModel.setResponseData("Author is invalid");

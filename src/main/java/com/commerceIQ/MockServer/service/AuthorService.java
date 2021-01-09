@@ -19,8 +19,7 @@ public class AuthorService {
 
 
 	private void validateData(AuthorRequestModel authorRequestModel, ResponseModel responseModel) {
-		System.out.println(authorRequestModel.toString());
-		
+				
 		if (authorRequestModel.getFirst_Name() == null || authorRequestModel.getFirst_Name().length() == 0) {
 			responseModel.setResponseCode("401");
 			responseModel.setResponseData("First Name is invalid");

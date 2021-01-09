@@ -31,9 +31,7 @@ public class AuthorUtil {
 		try {
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(new FileReader(filePath));
-			System.out.println(obj.toString());
 			JSONObject jsonObject = new JSONObject(obj.toString());
-			System.out.println(jsonObject.toString());
 			return jsonObject.toString();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,14 +105,9 @@ public class AuthorUtil {
 		try {
 			JSONArray arr = new JSONArray(getAuthorData());
 			for (int i = 0; i < arr.length(); i++) {
-				log.info("removeUtilcheck" + arr.get(i).toString());
 				JSONObject temp = new JSONObject(arr.get(i).toString());
-				log.info(temp.optInt("id"));
 				if (temp.optInt("id") == (int) index) {
-					log.info("inside if");
-
 					arr.remove(i);
-					log.info(arr.toString());
 					return storeAuthorData(arr.toString());
 
 				}
@@ -132,7 +125,6 @@ public class AuthorUtil {
 	public boolean storeAuthorData(String data) {
 		try {
 			JSONObject alldatajson = new JSONObject(readDataFromFile());
-			System.out.println(alldatajson.toString());
 			alldatajson.remove("authors");
 			alldatajson.putOpt("authors", new JSONArray(data));
 
@@ -175,7 +167,6 @@ public class AuthorUtil {
 	public boolean addData(String data) {
 		try {
 			JSONArray arr = new JSONArray(getAuthorData());
-			System.out.println("159" + arr.toString());
 			arr.put(new JSONObject(data));
 			return storeAuthorData(arr.toString());
 
@@ -222,8 +213,7 @@ public class AuthorUtil {
 	      for(int i = 0; i < jsonArray.length(); i++) {
 	         list.add(jsonArray.getJSONObject(i));
 	      }
-	      System.out.println("Before Sorted JSONArray: " + jsonArray);
-	      Collections.sort(list, new Comparator() {
+	         Collections.sort(list, new Comparator() {
 	         private final String KEY_NAME = sortType;
 	         @Override
 	         public int compare(Object o1, Object o2) {

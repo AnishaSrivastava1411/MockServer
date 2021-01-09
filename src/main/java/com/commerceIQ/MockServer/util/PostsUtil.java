@@ -31,9 +31,7 @@ public class PostsUtil {
 		try {
 			JSONParser parser = new JSONParser();
 			Object obj = parser.parse(new FileReader(filePath));
-			System.out.println(obj.toString());
 			JSONObject jsonObject = new JSONObject(obj.toString());
-			System.out.println(jsonObject.toString());
 			return jsonObject.toString();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -128,14 +126,9 @@ public String filterTitleAuthor(String title,String author) {
 		try {
 			JSONArray arr = new JSONArray(getPostsData());
 			for (int i = 0; i < arr.length(); i++) {
-				log.info("removeUtilcheck" + arr.get(i).toString());
 				JSONObject temp = new JSONObject(arr.get(i).toString());
-				log.info(temp.optInt("id"));
 				if (temp.optInt("id") == (int) index) {
-					log.info("inside if");
-
 					arr.remove(i);
-					log.info(arr.toString());
 					return storePostsData(arr.toString());
 
 				}
@@ -153,7 +146,6 @@ public String filterTitleAuthor(String title,String author) {
 	public boolean storePostsData(String data) {
 		try {
 			JSONObject alldatajson = new JSONObject(readDataFromFile());
-			System.out.println(alldatajson.toString());
 			alldatajson.remove("posts");
 			alldatajson.putOpt("posts", new JSONArray(data));
 
@@ -218,8 +210,7 @@ public String filterTitleAuthor(String title,String author) {
 	      for(int i = 0; i < jsonArray.length(); i++) {
 	         list.add(jsonArray.getJSONObject(i));
 	      }
-	      System.out.println("Before Sorted JSONArray: " + jsonArray);
-	      Collections.sort(list, new Comparator() {
+	         Collections.sort(list, new Comparator() {
 	         private final String KEY_NAME = sortType;
 	         @Override
 	         public int compare(Object o1, Object o2) {
