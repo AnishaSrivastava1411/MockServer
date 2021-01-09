@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import com.commerceIQ.MockServer.controller.AuthorController;
 @Component
 @Scope("prototype")
-public class AuthorUtil {
+public class PostsUtil {
 	
 	@Value("${filePath}")
 	public String filePath;
@@ -34,13 +34,13 @@ public class AuthorUtil {
 		}
 		catch(Exception e ){
 			e.printStackTrace();
-			log.error("error {}", e.getMessage()); 
+			log.error("error {}", e.getMessage());
 			return "{}";
 		}
 		
 	}
 	
-	public String getAuthorData() {
+	public String getPostsData() {
 		try {
 		
 			JSONObject loadAllData;
@@ -50,9 +50,9 @@ public class AuthorUtil {
 			else
 				loadAllData = new JSONObject(data);
 		
-			JSONArray author = new JSONArray(loadAllData.optString("authors", "[]"));
+			JSONArray Posts = new JSONArray(loadAllData.optString("Posts", "[]"));
 		
-			return author.toString();
+			return Posts.toString();
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class AuthorUtil {
 	
 	public int getlastIndex(){
 		try {
-			return new JSONArray(getAuthorData()).length();
+			return new JSONArray(getPostsData()).length();
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -75,9 +75,9 @@ public class AuthorUtil {
 		
 	}
 	
-	public String getAuthorData(int index) {
+	public String getPostsData(int index) {
 		try {
-			JSONArray arr = new JSONArray(getAuthorData());
+			JSONArray arr = new JSONArray(getPostsData());
 			for(int i =0;i<arr.length();i++)
 			{
 				JSONObject temp = new JSONObject(arr.get(i));
@@ -96,16 +96,16 @@ public class AuthorUtil {
 	}
 
 }
-	public boolean removeAuthorData(int index)
+	public boolean removePostsData(int index)
 	{
 		try {
-			JSONArray arr = new JSONArray(getAuthorData());
+			JSONArray arr = new JSONArray(getPostsData());
 			for(int i =0;i<arr.length();i++)
 			{
 				JSONObject temp = new JSONObject(arr.get(i));
 				if(temp.optInt("id")==index) {
 					arr.remove(i);
-				return	storeAuthorData(arr.toString());
+				return	storePostsData(arr.toString());
 					
 				}
 									
@@ -118,13 +118,13 @@ public class AuthorUtil {
 			return false;
 		}
 	}
-	public boolean storeAuthorData(String data)
+	public boolean storePostsData(String data)
 	{
 		try {
 			JSONObject alldatajson = new JSONObject(readDataFromFile());
 			System.out.println(alldatajson.toString());
-			alldatajson.remove("authors");
-			alldatajson.putOpt("authors", new JSONArray(data));
+			alldatajson.remove("Posts");
+			alldatajson.putOpt("Posts", new JSONArray(data));
 			
 		     FileWriter file = new FileWriter(filePath);
 	         file.write(alldatajson.toString());
@@ -138,19 +138,18 @@ public class AuthorUtil {
 	}
 }
 	
-	public boolean updateAuthorData(int index, JSONObject updateData) {
+	public boolean updatePostsData(int index, JSONObject updateData) {
 		
 		
 		try {
-			JSONArray arr = new JSONArray(getAuthorData());
+			JSONArray arr = new JSONArray(getPostsData());
 			for(int i =0;i<arr.length();i++)
 			{
 				JSONObject temp = new JSONObject(arr.get(i));
 				if(temp.optInt("id")==index) {
 					arr.remove(i);
 					arr.put(updateData);
-					return storeAuthorData(arr.toString());
-					
+					return storePostsData(arr.toString());
 					
 				}
 									
@@ -168,10 +167,9 @@ public class AuthorUtil {
 	
 	public boolean addData(String data) {
 		try {
-		 JSONArray arr = new JSONArray(getAuthorData());
-		 System.out.println("159"+arr.toString());
+		 JSONArray arr = new JSONArray(getPostsData());
 		 arr.put(new JSONObject(data));
-		return  storeAuthorData(arr.toString());
+		return  storePostsData(arr.toString());
 			
 		}catch (Exception e) {
 			e.printStackTrace();

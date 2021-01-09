@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class ResponseModel {
+	
 	private String responseCode;
 	private Object responseData;
+	
 	public ResponseModel(String responseCode, Object responseData) {
 		super();
 		this.responseCode = responseCode;

@@ -31,7 +31,6 @@ public class AuthorController {
 	public ResponseEntity<Object> setAuthor(@RequestBody AuthorRequestModel authorRequestModel){
 	
 		log.info("inside setAuthor");
-	//	log.error("error {}", e.getMessage());                catch block of util
 		responseModel= getResponseModelObj();
 		
 		getAuthorServiceObj().storeAuthorData(authorRequestModel, responseModel);
@@ -44,7 +43,7 @@ public class AuthorController {
 	}
 	
 	
-	@GetMapping( value ="/getAllData")
+	@GetMapping( value ="/getAllAuthorData")
 	public ResponseEntity<Object> getAllData()
 	{
 		responseModel= getResponseModelObj();
