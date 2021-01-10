@@ -1,7 +1,14 @@
-# CommerceIQ Home Assignment
+# <ul>    CommerceIQ Home Assignment</ul>
 # MockServer 
-<u><h4> Built a REST based JSON mock server to easily add, update, delete and access data from a JSON file. </h4></u>
+<u><h4> Built a REST based JSON mock server to easily add, update, delete and access data from a JSON file.
+    MockServer supports multiple type of entities. An entity_type is a list of entities which are similar by their type.</h4></u>
+    
+# CommerceIQ_MockServer
+<h3>1. store.json</h3>
+Entities are stored in store.json file. which initially is and empty json object. With every new object added/modified/deleted, the store.json file gets updated.
 
+<h3>2. MockServer.log</h3>
+This file contains the log of complete process. Starting from empty json object to entire process shown further.
 
 # URLs for Operations
 
