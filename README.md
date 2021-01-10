@@ -1,7 +1,9 @@
 # <ul>    CommerceIQ Home Assignment</ul>
+
 # MockServer 
-<u><h4> Built a REST based JSON mock server to easily add, update, delete and access data from a JSON file.
-    MockServer supports multiple type of entities. An entity_type is a list of entities which are similar by their type.</h4></u>
+ Built a REST based JSON mock server to easily add, update, delete and access data from a JSON file.
+    MockServer supports multiple type of entities. An entity_type is a list of entities which are similar by their type.
+    
     
 # CommerceIQ_MockServer
 <h3>1. store.json</h3>
