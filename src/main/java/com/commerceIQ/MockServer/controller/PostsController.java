@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -89,7 +90,7 @@ public class PostsController {
 		}
 	}
 
-	@PutMapping("/updatePosts/{posts_id}")
+	@PatchMapping("/updatePosts/{posts_id}")
 	public ResponseEntity<Object> updatePosts(@PathVariable(value = "posts_id") int postsId,
 			@RequestBody PostsRequestModel PostsRequestModel) {
 		log.info("inside updatePosts" + postsId);
