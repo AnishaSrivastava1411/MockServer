@@ -51,7 +51,7 @@ This file contains the log of complete process. Starting from empty json object 
 
 
 
-<h2>2. Update a record (PUT)</h2>
+<h2>2. Update a record (PATCH)</h2>
 
 <h3>a) posts : {BASE_URL}/updatePosts/{posts_id} </h3>
 
