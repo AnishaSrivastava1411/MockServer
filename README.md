@@ -7,7 +7,7 @@
     
 # CommerceIQ_MockServer
 <h3>1. store.json</h3>
-Entities are stored in store.json file. which initially is and empty json object. With every new object added/modified/deleted, the store.json file gets updated.
+Entities are stored in store.json file. which is initially an empty json object. With every new object added/modified/deleted, the store.json file gets updated.
 
 <h3>2. MockServer.log</h3>
 This file contains the log of complete process. Starting from empty json object to entire process shown further.
